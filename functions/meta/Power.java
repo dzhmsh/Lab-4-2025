@@ -2,7 +2,7 @@ package functions.meta;
 
 import functions.Function;
 
-public class Power implements Function{
+public class Power implements Function {
     /*
      * Создайте класс `Power`, объекты которого представляют собой функции,
      * являющиеся степенью другой функции. Конструктор класса должен получать ссылку
@@ -13,10 +13,11 @@ public class Power implements Function{
     private Function fun;
     private double pow;
 
-    public Power(Function fun, double pov) {
+    public Power(Function fun, double power) {
         this.fun = fun;
-        this.pow = pow;
+        this.pow = power;
     }
+
     @Override
     public double getLeftDomainBorder() {
         return (fun.getLeftDomainBorder());
