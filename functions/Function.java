@@ -1,8 +1,7 @@
 package functions;
 
-import java.io.Serializable;
+public interface Function {
 
-public interface TabulatedFunction extends Function, Serializable {
     /*
      * • public double getLeftDomainBorder() – возвращает значение левой границы
      * области определения функции;
@@ -17,23 +16,10 @@ public interface TabulatedFunction extends Function, Serializable {
      * так, чтобы он расширял интерфейс Function. Теперь табулированные функции буду
      * частным случаем функций одной переменной.
      */
+    public double getLeftDomainBorder();
 
-    int getPointsCount();
+    public double getRightDomainBorder();
 
-    FunctionPoint getPoint(int index);
-
-    void setPoint(int index, FunctionPoint point) throws InappropriateFunctionPointException;
-
-    double getPointX(int index);
-
-    void setPointX(int index, double x) throws InappropriateFunctionPointException;
-
-    double getPointY(int index);
-
-    void setPointY(int index, double y);
-
-    void deletePoint(int index);
-
-    void addPoint(FunctionPoint point) throws InappropriateFunctionPointException;
+    public double getFunctionValue(double x);
 
 }

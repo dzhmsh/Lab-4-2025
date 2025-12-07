@@ -13,6 +13,33 @@ public class ArrayTabulatedFunction implements TabulatedFunction {
     // и количеству точек для табулирования
 
     /*
+     * В классах ArrayTabulatedFunction и LinkedListTabulatedFunction добавьте
+     * конструкторы, получающие сразу все точки функции в виде массива объектов типа
+     * FunctionPoint. Если точек задано меньше двух, или если точки в массиве не
+     * упорядочены по значению абсциссы, конструкторы должны выбрасывать исключение
+     * IllegalArgumentException. При написании конструкторов обеспечьте корректную
+     * инкапсуляцию.
+     */
+    public ArrayTabulatedFunction(FunctionPoint[] array) {
+        if (array.length < 2) {
+            throw new IllegalArgumentException("Length must be more than 2");
+        }
+        this.pointCount = array.length;
+        this.arrayOfPoints = new FunctionPoint[array.length]; // Размер точно под массив
+
+        // Копируем первую точку
+        this.arrayOfPoints[0] = new FunctionPoint(array[0]);
+
+        for (int i = 1; i < array.length; i++) {
+            // Проверка упорядоченности
+            if (array[i].getX() <= array[i - 1].getX()) {
+                throw new IllegalArgumentException("Points must be sorted by X");
+            }
+            this.arrayOfPoints[i] = new FunctionPoint(array[i]);
+        }
+    }
+
+    /*
      * IllegalArgumentException, если левая граница области определения больше или
      * равна правой, а также если предлагаемое количество точек меньше двух.
      */
